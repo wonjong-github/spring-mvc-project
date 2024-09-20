@@ -1,5 +1,6 @@
 package com.example.springmvcproject.football;
 
+import com.example.springmvcproject.ResultDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +17,8 @@ public class FootballController {
     private final FootballService footballService;
 
     @GetMapping("/areas")
-    public AreaResponseDto getAllAreas() {
+    public ResultDto<AreaDTO> getAllAreas() {
         List<AreaDTO> allAreas = footballService.getAllAreas();
-        return new AreaResponseDto(allAreas.size(), new HashMap<>(), allAreas);
+        return new ResultDto<>(allAreas.size(), allAreas);
     }
 }
